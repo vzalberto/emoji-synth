@@ -1,22 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import * as Tone from 'tone'
+
+const App = () => {
+  const synth = new Tone.Synth().toDestination();
+  let octave = 4;
+
+  const play = (note) => {
+    synth.triggerAttackRelease(note, "8n")
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div id="synth">
+          <button onClick={()=>play("C"+octave)}>🥺</button>
+          <button onClick={()=>play("D"+octave)}>🤡</button>
+          <button onClick={()=>play("E"+octave)}>🤔</button>
+          <button onClick={()=>play("F"+octave)}>😀</button>
+          <button onClick={()=>play("G"+octave)}>🙈</button>
+          <button onClick={()=>play("A"+octave)}>😜</button>
+          <button onClick={()=>play("B"+octave)}>🥰</button>
+          &nbsp;
+          <button onClick={()=>play("C"+(octave+1))}>🥺</button>
+          <button onClick={()=>play("D"+(octave+1))}>🤡</button>
+          <button onClick={()=>play("E"+(octave+1))}>🤔</button>
+          <button onClick={()=>play("F"+(octave+1))}>😀</button>
+          <button onClick={()=>play("G"+(octave+1))}>🙈</button>
+          <button onClick={()=>play("A"+(octave+1))}>😜</button>
+          <button onClick={()=>play("B"+(octave+1))}>🥰</button>
+        </div>
+        <div>
+          <button onClick={()=>octave = octave - 1}>👎</button>
+          <button onClick={()=>octave = octave + 1}>👍</button>
+        </div>
       </header>
     </div>
   );
